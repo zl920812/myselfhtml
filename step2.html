@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)http://shanshuo-eyewear.com/step2.html -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+    <script type="text/javascript" src="./jweixin-1.2.0.js"></script>
+
+    <meta name="csrf-param" content="_csrf">
+    <meta name="csrf-token" content="bm9yVDBhYnQPNTlkajdPOAYKHD1eNDJACRVCH1UmVSUkDRUGHTEkRA==">
+    
+    <title>视力自测</title>
+    <link href="./bootstrap.css" rel="stylesheet">
+    <link href="./site.css" rel="stylesheet">
+    <script src="./jquery.js"></script>
+    <script src="./yii.js"></script>
+    <script src="./bootstrap.js"></script>    
+
+    <style>
+        @media screen and (min-width: 1201px) {
+            html, body {
+                width: 560px;margin: 0 auto;
+            }
+        }
+
+        /* css注释：设置了浏览器宽度不小于1201px时 显示1200px宽度 */
+
+        @media screen and (max-width: 1200px) {
+            html, body {
+                width: 560px;margin: 0 auto;
+            }
+        }
+
+        /* 设置了浏览器宽度不大于1200px时显示900px宽度 */
+
+        @media screen and (max-width: 901px) {
+            html, body {
+                width: 100%;
+            }
+        }
+
+        /* 设置了浏览器宽度不大于901px时  显示200px宽度 */
+    </style>
+</head>
+<body>
+
+<div style="height:100%;">
+    <style>
+
+    #canvas {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 20px auto;
+        text-align: center;
+    }
+</style>
+<div id="canvas" style="min-height: 480px;">
+    <h2 style="margin:20px;font-weight: bold ">屏幕校准</h2>
+	<br>
+	<br>
+    <div style="margin: 0 auto ;background:url(./img/ruler_1.png) no-repeat; background-size:100%;width: 145px;height: 120px;min-width: 50px;text-align: center;padding-top: 10px" id="cm">2.5</div>
+    <br>
+    <!--<div id="coin" style="background: url(./img/coin.png) center no-repeat;width: 145px;height: 145px;background-size: 100% 100%;margin: -100px auto 0"></div>
+-->
+
+    <hr>
+    <div style="width: 90%;margin: 0 auto;text-align: justify">
+        <span style="color: red">*</span> 将包装上黑色标记置于屏幕图案上，点击“放大”或“缩小”按钮，调整屏幕上图案到真实大小。
+        <br>
+
+        <div style="text-align: center; margin-top:10px;">
+            <button onclick="bigger()" class="btn btn-large btn-default" style="outline: none;border-radius: 5px!important;background: #F4F4F4;border: 1px solid #C0C0C0">放大
+            </button>
+            <button onclick="smaller()" class="btn btn-large btn-default" style="margin-left: 50px;outline: none;border-radius: 5px!important;background: #F4F4F4;border: 1px solid #C0C0C0">缩小
+            </button>
+            <br><br>
+            <input type="button" class="btn btn-large" style="background: #1CC975;width: 90%;display: block;margin: 10px auto 10px;font-size: 20px;height: 45px;border-radius: 5px;color: #fff" value="校准完成" onclick="save()">
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        window.scrollTo(0, 0);
+        
+        $('#iknow').click(function(){
+            $('#method').modal('hide');
+        });
+
+    });
+
+    function bigger() {
+        var coin = $('#coin');
+        var cm = $('#cm');
+        var width = coin.width();
+        var height = coin.height();
+        var cmWidth = cm.width();
+        coin.css('background-size', width + 2);
+        coin.css('width', width + 2);
+        coin.css('height', width + 2);
+        cm.css('width', width+2);
+    }
+
+    function smaller() {
+        var coin = $('#coin');
+        var cm = $('#cm');
+        var width = coin.width();
+        var height = coin.height();
+        var cmWidth = cm.width();
+        coin.css('background-size', width - 2);
+        coin.css('width', width - 2);
+        coin.css('height', width - 2);
+        cm.css('width', width - 2);
+    }
+
+    function save() {
+        var coin = $('#coin').width() * 1.452;
+        window.location.href = "./step3.html?coin=" + coin;
+
+    }
+
+</script></div>
+</body></html>
